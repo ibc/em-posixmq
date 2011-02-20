@@ -5,7 +5,7 @@ EM-PosixMQ integrates [posix_mq](http://bogomips.org/ruby_posix_mq) Ruby library
 
 ## Usage Example
 
- * Server (reads from a Posix message queue):
+ * Server (reads from a POSIX message queue):
  
     require "em-posixmq"
     
@@ -20,12 +20,12 @@ EM-PosixMQ integrates [posix_mq](http://bogomips.org/ruby_posix_mq) Ruby library
       EM::PosixMQ.run posix_mq, MyPosixMQ
     end
 
- * Client (writes into a Posix message queue):
+ * Client (writes into a POSIX message queue):
 
     require "posix_mq"
     require "securerandom"
     
-    posix_mq = POSIX_MQ.new "/test-em-posixmq", IO::CREAT | IO::WRONLY | IO::NONBLOCK, 00660
+    posix_mq = POSIX_MQ.new "/my_posix_mq", IO::CREAT | IO::WRONLY | IO::NONBLOCK, 00660
     
     while true do
       message = SecureRandom.hex 6
@@ -37,13 +37,13 @@ EM-PosixMQ integrates [posix_mq](http://bogomips.org/ruby_posix_mq) Ruby library
       sleep SecureRandom.random_number
     end
 
-The client script will write random messages with random priority into a Posix message queue named "/test-em-posixmq" at variable intervals.
+The client script will write random messages with random priority into a POSIX message queue named "/my_posix_mq" at variable intervals.
 
 
 
 ## Creating a Handler
 
-In order to use EM-PosixMQ a class handler must be created. Such class must inherit from `EM::PosixMQ::Watcher` and define the method `receive_message` which would be called with two parameters `message` (a `String`) and `priority` (a `Fixnum`) upon receipt of a message in the Posix messaeg queue.
+In order to use EM-PosixMQ a class handler must be created. Such class must inherit from `EM::PosixMQ::Watcher` and define the method `receive_message` which would be called with two parameters `message` (a `String`) and `priority` (a `Fixnum`) upon receipt of a message in the POSIX messaeg queue.
 
     class MyPosixMQ < EM::PosixMQ::Watcher
       def receive_message(message, priority)
