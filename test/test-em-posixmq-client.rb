@@ -4,7 +4,7 @@ require "posix_mq"
 require "securerandom"
 
 
-posix_mq = POSIX_MQ.new "/test-em-posixmq", IO::CREAT | IO::WRONLY | IO::NONBLOCK
+posix_mq = POSIX_MQ.new "/my_posix_mq", IO::CREAT | IO::WRONLY | IO::NONBLOCK, 00660
 
 while true do
   message = SecureRandom.hex 6
