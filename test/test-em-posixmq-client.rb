@@ -1,10 +1,11 @@
 #!/usr/bin/ruby
 
+require "rubygems"
 require "posix_mq"
 require "securerandom"
 
 
-posix_mq = POSIX_MQ.new "/my_posix_mq", IO::CREAT | IO::WRONLY | IO::NONBLOCK, 00660
+posix_mq = POSIX_MQ.new "/my_posix_mq", IO::CREAT | IO::WRONLY | IO::NONBLOCK
 
 while true do
   message = SecureRandom.hex 6

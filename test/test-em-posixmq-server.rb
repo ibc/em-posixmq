@@ -1,11 +1,12 @@
 #!/usr/bin/ruby
 
+require "rubygems"
 require "em-posixmq"
 
 
 class MyPosixMQ < EM::PosixMQ::Watcher
   def receive_message(message, priority)
-    puts "received message with priority #{priority}: #{message.inspect}"
+    puts "received message '#{message}' with priority #{priority} from the queue"
   end
 end
 
