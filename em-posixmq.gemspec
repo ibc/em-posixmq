@@ -1,6 +1,8 @@
+require "./lib/em-posixmq/version"
+
 Gem::Specification.new do |spec|
   spec.name = "em-posixmq"
-  spec.version = "0.1.0"
+  spec.version = EventMachine::PosixMQ::VERSION
   spec.date = Time.now
   spec.authors = ["Iñaki Baz Castillo"]
   spec.email = "ibc@aliax.net"
@@ -13,6 +15,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "posix_mq"
   spec.files = %w{
     lib/em-posixmq.rb
+    lib/em-posixmq/version.rb
     test/test-em-posixmq-client.rb
     test/test-em-posixmq-server.rb
   }
