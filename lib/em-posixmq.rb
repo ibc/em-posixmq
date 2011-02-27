@@ -29,11 +29,10 @@ module EventMachine::PosixMQ
     raise Error, "`posix_mq' argument must be a POSIX_MQ instance" unless
       posix_mq.is_a? POSIX_MQ
       
-    EM.watch posix_mq.to_io, handler, posix_mq do |conn|
-      conn.notify_readable = true
-    end
+    conn = EM.watch posix_mq.to_io, handler, posix_mq
+    conn.notify_readable = true
 
-    self
+    return conn
   end
 
 end
