@@ -12,7 +12,9 @@ while true do
   priority = SecureRandom.random_number 9
 
   puts "sending message '#{message}' with priority #{priority} to the queue..."
-  posix_mq.send message, priority
+  unless posix_mq.trysend message, priority
+    puts "WARN: cannot write '#{message}' into the queue (full)"
+  end
 
   sleep SecureRandom.random_number
 end

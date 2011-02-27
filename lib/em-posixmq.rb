@@ -1,6 +1,8 @@
 require "eventmachine"
 require "posix_mq"
 
+require "em-posixmq/version"
+
 
 module EventMachine::PosixMQ
 
@@ -11,14 +13,13 @@ module EventMachine::PosixMQ
     end
 
     def notify_readable
-      begin
-        message, priority = @posix_mq.receive
-        receive_message message, priority
-      rescue Errno::EAGAIN
-      end
+      # POSIX_MQ#tryreceive returns nil in case there is nothing to read.
+      message, priority = @posix_mq.tryreceive
+      receive_message message, priority if message
     end
 
     def receive_message(message, priority)
+      # This method must be defined in the user's class inherinting this one.
     end
   end
 
