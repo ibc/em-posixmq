@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 require "./lib/em-posixmq/version"
 
 Gem::Specification.new do |spec|
