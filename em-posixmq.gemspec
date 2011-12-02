@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.files = %w{
     lib/em-posixmq.rb
     lib/em-posixmq/version.rb
+    lib/em-posixmq/errors.rb
     test/test-em-posixmq-client.rb
     test/test-em-posixmq-server.rb
   }
