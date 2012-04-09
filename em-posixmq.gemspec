@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
   spec.description =
     "em-posixmq integrates posix_mq Ruby library into the EventMachine reactor allowing asynchronous reading from a POSIX message queue"
   spec.required_ruby_version = ">= 1.8.7"
-  spec.add_dependency "eventmachine"
   spec.add_dependency "posix_mq", ">= 1.0.0"
   spec.files = %w{
     lib/em-posixmq.rb
